@@ -3,8 +3,9 @@ import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 class SamplePlayer extends StatefulWidget {
-  SamplePlayer({Key key}) : super(key: key);
+  SamplePlayer({Key key, this.url}) : super(key: key);
 
+  final String url;
   @override
   _SamplePlayerState createState() => _SamplePlayerState();
 }
@@ -16,8 +17,9 @@ class _SamplePlayerState extends State<SamplePlayer> {
     super.initState();
     flickManager = FlickManager(
       autoPlay: true,
-      videoPlayerController:
-      VideoPlayerController.network("https://staging.milov.id/videoProfile/62813112233/MjAyMTA1MTkwOTQ2MzFfNjI4MTMxMTIyMzNfbWlsb3ZfdHJpbV81OTgzLm1wNA==") ..setLooping(true),
+      videoPlayerController: VideoPlayerController.network(widget.url ??
+          "https://staging.milov.id/videoProfile/62813112233/MjAyMTA1MTkwOTQ2MzFfNjI4MTMxMTIyMzNfbWlsb3ZfdHJpbV81OTgzLm1wNA==")
+        ..setLooping(true),
     );
   }
 
@@ -31,7 +33,7 @@ class _SamplePlayerState extends State<SamplePlayer> {
   Widget build(BuildContext context) {
     return Container(
       child: FlickVideoPlayer(
-          flickManager: flickManager
+        flickManager: flickManager,
       ),
     );
   }

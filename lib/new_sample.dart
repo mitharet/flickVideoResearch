@@ -21,8 +21,8 @@ class _SampleUiState extends State<SampleUi> {
   FlickMultiManager flickMultiManager;
   FlickManager flickManager;
 
-  var url =
-      'https://staging.milov.id/videoProfile/62813112233/MjAyMTA1MTkwOTQ2MzFfNjI4MTMxMTIyMzNfbWlsb3ZfdHJpbV81OTgzLm1wNA==';
+  final ValueNotifier<String> _url = ValueNotifier<String>(
+      ' https://staging.milov.id/videoProfile/62813112233/MjAyMTA1MTkwOTQ2MzFfNjI4MTMxMTIyMzNfbWlsb3ZfdHJpbV81OTgzLm1wNA==');
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _SampleUiState extends State<SampleUi> {
   }
 
   VideoPlayerController videoPlayerController() {
-    return VideoPlayerController.network(url);
+    return VideoPlayerController.network(_url.value);
   }
 
   @override
@@ -56,6 +56,14 @@ class _SampleUiState extends State<SampleUi> {
           children: [
             // Container(
             //   child: FlickVideoPlayer(flickManager: flickManager),
+            // ),
+            // ValueListenableBuilder(
+            //   valueListenable: _url,
+            //   builder: (_, v, __) {
+            //     return SamplePlayer(
+            //       url: v,
+            //     );
+            //   },
             // ),
             Container(
               child: ListView.builder(
@@ -91,8 +99,11 @@ class _SampleUiState extends State<SampleUi> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        this.url = items[index]['trailer_url'];
-                        print(url);
+                        _url.value = items[index]['trailer_url'];
+                        // setState(() {
+                        //   this.url = items[index]['trailer_url'];
+                        //   print(url);
+                        // });
                       },
                       child: Container(
                           height: 20,

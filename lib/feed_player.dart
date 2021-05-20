@@ -59,7 +59,7 @@ class _FeedPlayerState extends State<FeedPlayer> {
             //   height: 100,
             //   color: Colors.green,
             // ),
-            // scrollDirection: Axis.horizontal,
+            scrollDirection: Axis.horizontal,
             itemCount: items.length,
             itemBuilder: (context, index) {
               return Container(
