@@ -55,6 +55,7 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
         }
       },
       child: Container(
+        color:Colors.yellow,
         child: FlickVideoPlayer(
           flickManager: flickManager,
           flickVideoWithControls: FlickVideoWithControls(

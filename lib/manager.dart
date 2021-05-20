@@ -42,6 +42,7 @@ class FlickMultiManager {
     if (flickManager != null) {
       _activeManager?.flickControlManager?.pause();
       _activeManager = flickManager;
+      _activeManager?.flickDisplayManager?.handleShowPlayerControls();
     }
 
     if (_isMute) {

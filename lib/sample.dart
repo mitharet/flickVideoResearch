@@ -15,8 +15,9 @@ class _SamplePlayerState extends State<SamplePlayer> {
   void initState() {
     super.initState();
     flickManager = FlickManager(
+      autoPlay: true,
       videoPlayerController:
-      VideoPlayerController.network("https://staging.milov.id/videoProfile/62813112233/MjAyMTA1MTkwOTQ2MzFfNjI4MTMxMTIyMzNfbWlsb3ZfdHJpbV81OTgzLm1wNA=="),
+      VideoPlayerController.network("https://staging.milov.id/videoProfile/62813112233/MjAyMTA1MTkwOTQ2MzFfNjI4MTMxMTIyMzNfbWlsb3ZfdHJpbV81OTgzLm1wNA==") ..setLooping(true),
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:flick_video/new_sample.dart';
 import 'package:flick_video/sample.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -5,7 +6,6 @@ import 'package:visibility_detector/visibility_detector.dart';
 import 'data.dart';
 import 'manager.dart';
 import 'multti.dart';
-
 
 class FeedPlayer extends StatefulWidget {
   FeedPlayer({Key key}) : super(key: key);
@@ -17,7 +17,7 @@ class FeedPlayer extends StatefulWidget {
 class _FeedPlayerState extends State<FeedPlayer> {
   List items = mockData['items'];
 
-   FlickMultiManager flickMultiManager;
+  FlickMultiManager flickMultiManager;
 
   @override
   void initState() {
@@ -28,17 +28,23 @@ class _FeedPlayerState extends State<FeedPlayer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('FeedPlayer'),
+      appBar: AppBar(
+        title: Text('FeedPlayer'),
         actions: [
           IconButton(
               icon: Icon(Icons.send),
               onPressed: () {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => SamplePlayer()));
+              }),
+          IconButton(
+              icon: Icon(Icons.place),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => SampleUi()));
               })
         ],
       ),
-
       body: VisibilityDetector(
         key: ObjectKey(flickMultiManager),
         onVisibilityChanged: (visibility) {
@@ -48,7 +54,6 @@ class _FeedPlayerState extends State<FeedPlayer> {
         },
         child: Container(
           color: Colors.yellow,
-
           child: ListView.builder(
             // separatorBuilder: (context, int) => Container(
             //   height: 100,
